@@ -178,8 +178,169 @@ main {
     margin-bottom: 10px;
 }
 
+.seccond-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.quizz-question {
+    background-color: #ffffff;
+    margin: 42px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.top-banner-title {
+    width: 100vw;
+    height: 227px;
+    font-size: 39px;
+    line-height: 46px;
+    color: #ffffff;
+
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(./paisagem-de-nevoeiro-matinal-e-montanhas-com-baloes-de-ar-quente-ao-nascer-do-sol_335224-794.webp) no-repeat center center;
+    background-size: cover;
+    position: relative;
+}
+
+.top-banner-title p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.question {
+    width: 690px;
+    height: 140px;
+    background-color: #434ca0;
+    margin: 30px 35px 10px;
+    font-weight: 700;
+    font-size: 23px;
+    line-height: 27px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.question-options-display {
+    width: 690px;
+    height: auto;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.question-option {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-bottom: 15px;
+}
+
+.question-option img {
+    width: 330px;
+    height: 175px;
+}
+
+.question-option p {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+    color: #000000;
+}
+
+.end-quizz {
+    background-color: #ffffff;
+    margin-top: 42px ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.end-quizz-result {
+    width: 690px;
+    height: 140px;
+    background-color: #ec362d;
+    margin: 30px 35px 10px;
+    font-weight: 700;
+    font-size: 23px;
+    line-height: 27px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.end-results-details {
+    width: 690px;
+    height: 273px;
+    margin-bottom: 25px;
+    display: flex;
+}
+
+.end-results-details-img {
+    width: 340px;
+    height: 273px;
+    background: url(./paisagem-de-nevoeiro-matinal-e-montanhas-com-baloes-de-ar-quente-ao-nascer-do-sol_335224-794.webp) no-repeat center center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px 10px;
+    color: #ffffff;
+    text-align: center;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 20px;
+}
+
+.end-results-details-text {
+    width: 340px;
+    height: 273px;
+    margin-left: 10px;
+    font-weight: 700;
+    font-size: 19px;
+    line-height: 25px;
+    color: #484848;
+}
+
+.reset-quizz-button {
+    width: 260px;
+    height: 52px;
+    background-color: #ec362d;
+    color: #ffffff;
+    border-radius: 15px;
+    font-size: 21px;
+    line-height: 25px;
+    border: none;
+    margin: 20px 0 10px;
+}
+
+.return-home-button {
+    width: 260px;
+    height: 52px;
+    background-color: #fafafa;
+    color: #818181;
+    border-radius: 15px;
+    font-size: 21px;
+    line-height: 25px;
+    border: none;
+    margin-bottom: 20px;
+}
+
 .hidden {
     display: none;
+}
+
+.opacity {
+    opacity: 0.4;
 }
 
 @media (max-width:990px) {
@@ -206,4 +367,113 @@ main {
         flex-direction: column;
         align-items: center;
     }
+
+    .top-banner-title {
+        font-size: 3vw;
+        line-height: 2vw;
+        width: 100vw;
+        height: 22vh;
+    }
+
+    .question {
+        width: 95vw;
+        max-width: 690px;
+        height: 15vh;
+        margin: 0;
+    }
+
+    .question-options-display {
+        width: 95vw;
+        max-width: 690px;
+        height: auto;
+    }
+
+    .end-quizz {
+        margin-top: 15px;
+    }
+}
+
+@media (max-width:765px) {
+
+    .question-option img {
+        width: 45vw;
+        height: 33vw;
+    }
+
+    .end-quizz-result {
+        width: 90vw;
+        max-width: 690px;
+        height: 15vw;
+        font-size: 1em;
+        line-height: 1em;
+        padding: 4vw;
+        margin: 30px 2.5vw 10px;
+    }
+
+    .end-results-details {
+        width: 90vw;
+        height: auto;
+        margin: 0 5%;
+
+    }
+
+    .end-results-details-img {
+        width: 40vw ;
+        max-width: 340px;
+        height: 33vw;
+        font-weight: 700;
+        font-size: 1em;
+        line-height: 1em;
+    }
+
+    .end-results-details-text {
+        width: 40vw;
+        max-width: 340px;
+        height: 33vw;
+        font-size: 1em;
+        line-height: 1em;
+    }
+
+    .reset-quizz-button {
+        width: 50vw;
+        max-width: 260px;
+        height: 52px;
+        margin-top: 6vw;
+
+        font-size: 1em;
+        line-height: 1em
+    }
+
+    .return-home-button {
+        width: 50vw;
+        max-width: 260px;
+        height: 52px;
+
+        font-size: 1em;
+        line-height: 1em
+    }
+    
+}
+
+@media (max-width:395px) {
+
+    .question {
+        font-size: 10px;
+    }
+
+    .question-option p{
+        font-size: 10px;
+    }
+
+    .end-quizz-result { 
+        font-size: 10px;
+    }
+
+    .end-results-details-img { 
+        font-size: 10px;
+    }
+    
+    .end-results-details-text {
+        font-size: 10px;
+    }  
 }
