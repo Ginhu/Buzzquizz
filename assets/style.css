@@ -42,6 +42,7 @@ main {
     align-items: center;
     justify-content: space-evenly;
     width: 70vw;
+    min-width: 340px;
     height: auto;
     background-color: #fafafa;
     border: 1px dashed #d4d4d4;
@@ -193,6 +194,15 @@ main {
     }
 
     .your-quizzes-display {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .all-quizzes {
+        width: 340px;
+    }
+
+    .all-quizzes-display {
         flex-direction: column;
         align-items: center;
     }
