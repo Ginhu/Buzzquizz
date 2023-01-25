@@ -1,0 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=Righteous&family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+* {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    box-sizing: border-box;
+}
+
+header {
+    width: 100vw;
+    height: 69px;
+    background-color: #ec362d;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+    
+header span {
+    font-weight: 700;
+    font-size: 37px;
+    line-height: 43px;
+    color: #ffffff;
+}
+
+main {
+    width: 100vw;
+    height: (100vw - 69px);
+    background-color: #fafafa;
+}
+
+.first-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.create-quizz-empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 70vw;
+    height: auto;
+    background-color: #fafafa;
+    border: 1px dashed #d4d4d4;
+    border-radius: 5px;
+    margin: 50px 0;
+}
+
+.create-quizz-empty p {
+    width: 250px;
+    padding: 3vw 0;
+    text-align: center;
+    font-size: 20px;
+    line-height: 23px;
+}
+
+.create-quizz-empty button {
+    font-size: 21px;
+    line-height: 25px;
+    color: #ec362d;
+    background-color: #fafafa;
+    border: 1px dashed #ec362d;
+    border-radius: 50px;
+    margin-bottom: 33px;
+}
+
+.create-quizz-filled {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    width: 70vw;
+    height: auto;
+}
+
+.create-quizz-filled-icons {
+    display: flex;
+    align-items: center;
+    /* flex-direction: column;
+    
+    justify-content: space-evenly;
+    width: 70vw;
+    height: auto;
+    border: 1px dashed #d4d4d4;
+    border-radius: 5px; */
+    margin: 50px 0 15px;
+
+}
+
+.create-quizz-filled-icons p {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+    color: #000000;
+}
+
+.create-quizz-filled-icons ion-icon {
+    font-size: 30px;
+    color: #ec362d;
+    margin-left: 10px;
+}
+
+.your-quizzes-display {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+.your-quizz {
+    width: 340px;
+    height: 181px;
+    border-radius: 5px;
+    background-image: linear-gradient(to bottom, transparent 70%, #000000 98%), url(./paisagem-de-nevoeiro-matinal-e-montanhas-com-baloes-de-ar-quente-ao-nascer-do-sol_335224-794.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.your-quizz p {
+    font-size: 19px;
+    line-height: 22px;
+    color: #ffffff;
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    margin-bottom: 10px;
+}
+
+.all-quizzes {
+    width: 70vw;
+    height: auto;
+}
+
+.all-quizzes p {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+    color: #000000;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.all-quizzes-display {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.all-quizzes-display .quizz-one {
+    width: 340px;
+    height: 181px;
+    border-radius: 5px;
+    background-image: linear-gradient(to bottom, transparent 70%, #000000 98%), url(./paisagem-de-nevoeiro-matinal-e-montanhas-com-baloes-de-ar-quente-ao-nascer-do-sol_335224-794.webp);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.all-quizzes-display p {
+    font-weight: 400;
+    font-size: 19px;
+    line-height: 22px;
+    color: #ffffff;
+    position: absolute;
+    bottom: 0;
+    left: 20px;
+    margin-bottom: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width:990px) {
+    .create-quizz-filled {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .create-quizz-filled-icons {
+        justify-content: space-between;
+        width: 340px;
+    }
+
+    .your-quizzes-display {
+        flex-direction: column;
+        align-items: center;
+    }
+}
