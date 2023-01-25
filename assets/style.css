@@ -13,7 +13,10 @@ header {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: center;position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
 }
     
 header span {
@@ -25,7 +28,7 @@ header span {
 
 main {
     width: 100vw;
-    height: (100vw - 69px);
+    height: 100%;
     background-color: #fafafa;
 }
 
@@ -335,6 +338,204 @@ main {
     margin-bottom: 20px;
 }
 
+.third-screen {
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.basic-info-screen {
+    height: 100%;
+    margin-top: 15vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.third-screen span {
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 23px;
+}
+
+.third-screen p {
+    font-weight: 700;
+    font-size: 23px;
+    line-height: 27px;
+    margin:0 0 45px;
+}
+
+.basic-info-quizz {
+    width: 600px;
+    height: 256px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 21px 0 21px;
+}
+
+.basic-info-quizz input{ 
+    width: 564px;
+    height: 46px;
+    background-color: #ffffff;
+    border: 1px solid #d1d1d1;
+    border-radius: 5px;
+    margin: 0 0 10px;
+    padding-left: 25px;
+
+    font-size: 19px;
+    line-height: 22px;
+    color: #bababa;
+}
+
+.third-screen button {
+    width: 370px;
+    height: 54px;
+    background-color: #ec362d;
+    border-radius: 15px;
+    margin: 85px 0 35px;
+    border: none;
+    color: #fff5f4;
+    font-size: 21px;
+    line-height: 25px;
+}
+
+.question-screen {
+    height: 100%;
+    margin-top: 15vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.question-1 {
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+    
+}
+
+.question-1 span{
+    margin: 10px 25px 25px;
+}
+
+.question-1 input{
+    margin: 0 25px 10px;
+    
+    width: 564px;
+    height: 46px;
+    background-color: #ffffff;
+    border: 1px solid #d1d1d1;
+    border-radius: 5px;
+    padding-left: 25px;
+
+    font-size: 19px;
+    line-height: 22px;
+    color: #bababa;
+}
+
+.question-2-hidden {
+    width: 601px;
+    height: 74px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    margin: 25px 0 0;
+}
+
+.question-2-hidden span {
+    margin-left: 45px;
+}
+
+.question-2-hidden ion-icon {
+    margin-right: 25px;
+    font-size: 25px;
+}
+
+.level-screen {
+    height: 100%;
+    margin-top: 15vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.level {
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+}
+
+.level span {
+    margin: 10px 25px 25px;
+}
+
+.level input {
+    margin: 0 15px 10px;    
+
+    width: 564px;
+    height: 46px;
+    background-color: #ffffff;
+    border: 1px solid #d1d1d1;
+    border-radius: 5px;
+    padding-left: 25px;
+
+    font-size: 19px;
+    line-height: 22px;
+    color: #bababa;
+}
+
+.quizz-ready {
+    height: 100vh;
+    margin-top: 15vh; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.quizz-img {
+    background: url(./paisagem-de-nevoeiro-matinal-e-montanhas-com-baloes-de-ar-quente-ao-nascer-do-sol_335224-794.webp) no-repeat center center;
+    background-size: cover;
+    width: 500px;
+    height: 266px;
+
+    position: relative;
+}
+
+.quizz-img span {
+    position: absolute;
+    bottom: 25px;
+    left: 25px;
+
+    font-size: 23px;
+    line-height: 27px;
+    color: #ffffff;
+}
+
+.quizz-ready button {
+    margin: 25px 0 0;
+}
+
+.quizz-ready .return-home-button {
+    width: 260px;
+    height: 52px;
+    background-color: #fafafa;
+    color: #818181;
+    border-radius: 15px;
+    font-size: 21px;
+    line-height: 25px;
+    border: none;
+    margin-top: 15px;
+}
+
 .hidden {
     display: none;
 }
@@ -455,6 +656,38 @@ main {
     
 }
 
+@media (max-width:600px) {
+    .basic-info-quizz {
+        width: 100vw;
+        max-width: 600px;
+        height: auto;
+    }
+
+    .basic-info-quizz input{ 
+        width: 90%;
+    }
+
+    .third-screen button {
+        width: 65vw;
+        height: 54px;
+    }
+
+    .quizz-img {
+        width: 80vw;
+        height: 55vw;           
+    }
+
+    .quizz-img span {  
+        font-size: 1.2em;
+        line-height: 1.2em;
+    }
+
+    .question-2-hidden {
+        width: 100vw;
+        height: 74px;
+    }
+}
+
 @media (max-width:395px) {
 
     .question {
@@ -476,4 +709,21 @@ main {
     .end-results-details-text {
         font-size: 10px;
     }  
+
+    .basic-info-quizz input{ 
+        font-size: 15px;
+        padding-left: 10px;
+    }
+
+    .third-screen button {
+        font-size: 15px;
+    }
+
+    .quizz-img span {  
+        font-size: 15px;
+    }
+    
+    .quizz-ready .return-home-button {
+        font-size: 15px;
+    }
 }

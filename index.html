@@ -68,7 +68,7 @@
             </div>
         </div>
 
-        <div class="seccond-screen">
+        <div class="seccond-screen hidden">
             <div class="opacity-black-overlay">
                 <div class="top-banner-title">
                     <p>O quão Potterhead é você?</p>
@@ -118,6 +118,84 @@
 
             <button class="reset-quizz-button">Reiniciar Quizz</button>
             <button class="return-home-button">Voltar para home</button>
+        </div>
+
+        <div class="third-screen">
+            <div class="basic-info-screen">
+                <p>Comece pelo começo</p>
+                <div class="basic-info-quizz">
+                    <input type="text" placeholder="Título do seu quizz">
+                    <input type="text" placeholder="URL da imagem do seu quizz">
+                    <input type="text" placeholder="Quantidade de perguntas do quizz">
+                    <input type="text" placeholder="Quantidade de níveis do quizz">
+                </div>
+                <button>Prosseguir para criar perguntas</button>
+            </div>
+
+            <div class="question-screen hidden">
+                <p>Crie suas perguntas</p>
+                <div class="basic-info-quizz question-1">
+                    <span>Pergunta 1</span>
+                    <input type="text" placeholder="Texto da pergunta">
+                    <input type="text" placeholder="Cod de fundo da pergunta">
+                    <span>Resposta correta</span>
+                    <input type="text" placeholder="Resposta correta">
+                    <input type="text" placeholder="URL da imagem">
+                    <span></span>
+                    <input type="text" placeholder="Resposta incorreta 1">
+                    <input type="text" placeholder="URL da imagem 1">
+                    <span></span>
+                    <input type="text" placeholder="Resposta incorreta 2">
+                    <input type="text" placeholder="URL da imagem 2">
+                    <span></span>
+                    <input type="text" placeholder="Resposta incorreta 3">
+                    <input type="text" placeholder="URL da imagem 3">
+                </div>
+
+                <div class="question-2-hidden">
+                    <span>Pegunta 2</span>
+                    <ion-icon name="open-outline"></ion-icon>
+                </div>
+
+                <div class="question-2-hidden">
+                    <span>Pegunta 3</span>
+                    <ion-icon name="open-outline"></ion-icon>
+                </div>
+
+                <button>Prosseguir para criar perguntas</button>
+            </div>
+
+            <div class="level-screen hidden">
+                <p>Agora, decida os níveis</p>
+                <div class="basic-info-quizz level">
+                    <span>Nível 1</span>
+                    <input type="text" placeholder="Título do nível">
+                    <input type="text" placeholder="% de acerto mínima">
+                    <input type="text" placeholder="URL da imagem nível">
+                    <input type="text" placeholder="Descrição do nível">
+                </div>
+                <div class="question-2-hidden">
+                    <span>Nível 2</span>
+                    <ion-icon name="open-outline"></ion-icon>
+                </div>
+
+                <div class="question-2-hidden">
+                    <span>Nível 3</span>
+                    <ion-icon name="open-outline"></ion-icon>
+                </div>
+                <button>Finalizar Quizz</button>
+            </div>
+
+            <div class="quizz-ready hidden">
+                <p>Seu quizz está pronto!</p>
+
+                <div class="quizz-img">
+                    <span>O quão Potterhead é você?</span>
+                </div>
+
+                <button class="reset-quizz-button">Reiniciar Quizz</button>
+                <button class="return-home-button">Voltar para home</button>
+            </div>
         </div>
     </main>
 
