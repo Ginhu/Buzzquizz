@@ -45,10 +45,10 @@ function clickQuizz (param) {
 
                 function fillQuestionAnswers () {
 
-                    for (let i = 0; i<question.length; i++) {
+                    for (let i = question.length-1; i >=0 ; i--) {
                         const answer = question[i].answers;
                         /* console.log(answer); */
-
+                        document.querySelector('.opacity-black-overlay').insertAdjacentHTML('afterend', '<div class="quizz-question"></div>')
                         document.querySelector('.quizz-question').innerHTML += 
                         `<div class="question">
                             <p>${question[i].title}</p>                   
@@ -59,7 +59,7 @@ function clickQuizz (param) {
                         for (let a = 0; a<answer.length; a++) {
                             document.querySelector('.quizz-question').lastChild.innerHTML += 
                             `<div class="question-option">
-                                <img src="${answer[a].image}" alt="">
+                                <img src="${answer[a].image}" onclick="selectAnswer(this)" alt="">
                                 <p>${answer[a].text}</p>
                             </div>`
                         }
@@ -73,9 +73,12 @@ function clickQuizz (param) {
 
         fillHeader();
         fillQuestionAnswers();
-        
     }
 
     getQuizzes(fillQuizz);
     
+}
+
+function selectAnswer(param) {
+    document.querySelectorAll('')
 }
