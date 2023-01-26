@@ -184,6 +184,8 @@ main {
 }
 
 .seccond-screen {
+    height: 100%;
+    padding-top: 7.5vh;
     display: flex;
     flex-direction: column;
     align-items: center;
