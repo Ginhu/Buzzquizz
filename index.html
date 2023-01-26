@@ -16,18 +16,18 @@
 
     <main>
         <div class="first-screen">
-            <div class="create-quizz-empty hidden">
+            <div class="create-quizz-empty ">
                 <p>Você não criou nenhum quizz ainda :(</p>
-                <button>Criar Quizz</button>
+                <button onclick="createQuizz()">Criar Quizz</button>
             </div>
 
-            <div class="create-quizz-filled">
+            <div class="create-quizz-filled hidden">
                 <div class="create-quizz-filled-icons">
                     <p>Seus Quizzes</p>
                     <ion-icon name="add-circle"></ion-icon>
                 </div>
 
-                <div class="your-quizzes-display">
+                <div class="your-quizzes-display hidden">
                     <div class="your-quizz">
                         <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
                     </div>
@@ -129,7 +129,7 @@
                     <input type="text" placeholder="Quantidade de perguntas do quizz">
                     <input type="text" placeholder="Quantidade de níveis do quizz">
                 </div>
-                <button>Prosseguir para criar perguntas</button>
+                <button onclick="proceedCreatequestions()">Prosseguir para criar perguntas</button>
             </div>
 
             <div class="question-screen hidden">
@@ -154,15 +154,14 @@
 
                 <div class="question-2-hidden">
                     <span>Pegunta 2</span>
-                    <ion-icon name="open-outline"></ion-icon>
+                    <ion-icon name="open-outline" onclick="openQuestion(this)"></ion-icon>
                 </div>
-
                 <div class="question-2-hidden">
                     <span>Pegunta 3</span>
-                    <ion-icon name="open-outline"></ion-icon>
+                    <ion-icon name="open-outline" onclick="openQuestion(this)"></ion-icon>
                 </div>
 
-                <button>Prosseguir para criar perguntas</button>
+                <button onclick="proceedLevelscreen()">Prosseguir para criar níveis</button>
             </div>
 
             <div class="level-screen hidden">
@@ -183,7 +182,7 @@
                     <span>Nível 3</span>
                     <ion-icon name="open-outline"></ion-icon>
                 </div>
-                <button>Finalizar Quizz</button>
+                <button onclick="proceedfinishQuizz()">Finalizar Quizz</button>
             </div>
 
             <div class="quizz-ready hidden">
@@ -193,8 +192,8 @@
                     <span>O quão Potterhead é você?</span>
                 </div>
 
-                <button class="reset-quizz-button">Reiniciar Quizz</button>
-                <button class="return-home-button">Voltar para home</button>
+                <button onclick="accessQuizz()" class="reset-quizz-button">Acessar Quizz</button>
+                <button onclick="backHome()" class="return-home-button">Voltar para home</button>
             </div>
         </div>
     </main>
