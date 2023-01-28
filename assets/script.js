@@ -122,6 +122,9 @@ function clickQuizz (param) {
                     // Este for itera pelo array de perguntas para construir cada bloco que compoẽ a pergunta e suas opções de resposta
                     for (let i = question.length-1; i >=0 ; i--) {
                         const answer = question[i].answers;
+                        let shuffledAnswers = answer.sort(function() {
+                            return Math.random() - 0.5;
+                        })
                         /* console.log(answer); */
                         document.querySelector('.opacity-black-overlay').insertAdjacentHTML('afterend', '<div class="quizz-question"></div>')
                         document.querySelector('.quizz-question').innerHTML += 
