@@ -135,6 +135,9 @@ function clickQuizz (param) {
                     // Este for itera pelo array de perguntas para construir cada bloco que compoẽ a pergunta e suas opções de resposta
                     for (let i = question.length-1; i >=0 ; i--) {
                         const answer = question[i].answers;
+                        let shuffledAnswers = answer.sort(function() {
+                            return Math.random() - 0.5;
+                        })
                         /* console.log(answer); */
                         document.querySelector('.opacity-black-overlay').insertAdjacentHTML('afterend', '<div class="quizz-question"></div>')
                         document.querySelector('.quizz-question').innerHTML += 
@@ -190,3 +193,36 @@ function selectAnswer(param) {
     setTimeout(scrollNext, 2000);
 }
 
+// volta para a página inicial
+function returnHome() {
+    document.querySelector('.seccond-screen').classList.add('hidden');
+    document.querySelector('.first-screen').classList.remove('hidden');
+    window.scrollTo(0,0);
+}
+
+// reseta o quizz
+function resetQuizz() {
+    window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+    });
+
+    eraseAnswers();
+}
+
+// apaga as respostas
+function eraseAnswers(param) {
+
+    const el = document.querySelectorAll('.question-option p');
+    //console.log(el);
+    for (const elem of el) {
+        elem.previousSibling.classList.remove('opacity');
+        elem.setAttribute('onclick', "selectAnswer(this)");
+        console.log(elem);
+        if (elem.classList.contains(true)) {
+            elem.parentElement.querySelector('.question-option p').style.color = "#000000";
+        } else {
+            elem.parentElement.querySelector('.question-option p').style.color = "#000000";
+        }
+    }
+}
