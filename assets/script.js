@@ -7,6 +7,13 @@ const quizzReadyscreen = document.querySelector(".quizz-ready");
 const quizzEmpty = document.querySelector(".create-quizz-empty");
 const quizzFilled = document.querySelector(".create-quizz-filled");
 
+const title = document.getElementById("title");
+const imageQuizz = document.getElementById("image-quizz");
+const questionsAmount = document.getElementById("questions-amount");
+const levelsAmount = document.getElementById("levels-amount");
+
+
+
 function createQuizz() {
     firstScreen.classList.add("hidden");
     basicInfo.classList.remove("hidden");
@@ -22,8 +29,14 @@ function proceedCreatequestions() {
 
 function openQuestion (element){
     window.scrollTo(0, 0);
-    const nameQuestion = document.querySelector(".question-1 span");
-    nameQuestion.innerHTML = "Pergunta 2";
+    const nameQuestion = document.querySelector(".question-screen span");
+    const lastNameQuestion = nameQuestion.innerHTML;
+    
+    const questionhidden = element.parentElement;
+    const nameQuestionhidden = questionhidden.querySelector("span");
+    
+    nameQuestion.innerHTML = nameQuestionhidden.innerHTML;
+    nameQuestionhidden.innerHTML = lastNameQuestion;
 }
 function proceedLevelscreen(){
     questionScreen.classList.add("hidden");
