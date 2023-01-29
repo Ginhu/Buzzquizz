@@ -24,7 +24,7 @@
             <div class="create-quizz-filled hidden">
                 <div class="create-quizz-filled-icons">
                     <p>Seus Quizzes</p>
-                    <ion-icon name="add-circle"></ion-icon>
+                    <ion-icon onclick="createQuizz()" name="add-circle"></ion-icon>
                 </div>
 
                 <div class="your-quizzes-display hidden">
@@ -116,18 +116,18 @@
                 </div>
             </div>
 
-            <button class="reset-quizz-button">Reiniciar Quizz</button>
-            <button class="return-home-button">Voltar para home</button>
+            <button class="reset-quizz-button" onclick="resetQuizz()">Reiniciar Quizz</button>
+            <button class="return-home-button" onclick="returnHome()">Voltar para home</button>
         </div>
 
         <div class="third-screen">
             <div class="basic-info-screen hidden">
                 <p>Comece pelo começo</p>
                 <div class="basic-info-quizz">
-                    <input type="text" placeholder="Título do seu quizz">
-                    <input type="text" placeholder="URL da imagem do seu quizz">
-                    <input type="text" placeholder="Quantidade de perguntas do quizz">
-                    <input type="text" placeholder="Quantidade de níveis do quizz">
+                    <input id="title" type="text" placeholder="Título do seu quizz">
+                    <input id="image-quizz" type="text" placeholder="URL da imagem do seu quizz">
+                    <input id="questions-amount" type="text" placeholder="Quantidade de perguntas do quizz">
+                    <input id="levels-amount" type="text" placeholder="Quantidade de níveis do quizz">
                 </div>
                 <button onclick="proceedCreatequestions()">Prosseguir para criar perguntas</button>
             </div>
@@ -137,7 +137,7 @@
                 <div class="basic-info-quizz question-1">
                     <span>Pergunta 1</span>
                     <input type="text" placeholder="Texto da pergunta">
-                    <input type="text" placeholder="Cod de fundo da pergunta">
+                    <input type="text" placeholder="Cor de fundo da pergunta">
                     <span>Resposta correta</span>
                     <input type="text" placeholder="Resposta correta">
                     <input type="text" placeholder="URL da imagem">
