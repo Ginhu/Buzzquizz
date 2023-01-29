@@ -6,7 +6,7 @@ const levelScreen = document.querySelector(".level-screen");
 const quizzReadyscreen = document.querySelector(".quizz-ready");
 const quizzEmpty = document.querySelector(".create-quizz-empty");
 const quizzFilled = document.querySelector(".create-quizz-filled");
-const temporaryLevelObject = {};
+const temporaryLevelObject = [], arrayCheckLevel0 = [];
 
 const title = document.getElementById("title");
 const imageQuizz = document.getElementById("image-quizz");
@@ -48,10 +48,31 @@ function proceedLevelscreen(){
 }
 
 function proceedfinishQuizz(){
-    levelScreen.classList.add("hidden");
-    quizzReadyscreen.classList.remove("hidden");
-    window.scrollTo(0, 0); 
 
+    if (document.querySelector('.level1 input').value != "") {
+        checkLevelInputs("level1 input");
+        console.log("checando lvl1 input");
+    }
+
+    if (document.querySelector('.level2 input').value != "") {
+        checkLevelInputs("level2 input");
+        console.log("checando lvl2 input");
+    }
+
+    if (document.querySelector('.level3 input').value != "") {
+        checkLevelInputs("level3 input");
+        console.log("checando lvl3 input");
+    }
+
+    if (arrayCheckLevel0.includes('0') == true) {
+        levelScreen.classList.add("hidden");
+        quizzReadyscreen.classList.remove("hidden");
+        window.scrollTo(0, 0);
+    } else {
+        alert('Deve existir ao menos um nível com valor 0% de acerto');
+        temporaryLevelObject.length = 0;
+        arrayCheckLevel0.length = 0;
+    }
 }
 
 function accessQuizz(){
@@ -124,7 +145,7 @@ function clickQuizz (param) {
                 const quizzData = data[i];
                 const question = quizzData.questions;
                 
-                console.log(quizzData);
+                /* console.log(quizzData); */
                 /* console.log(question); */
 
                 // Função que vai preencher os itens do "cabeçalho", o Banner e o Texto com o título do quizz
@@ -208,14 +229,14 @@ function selectAnswer(param) {
 }
 
 function showNextLevel(param) {
-    param.parentElement.classList.add('hidden');
-    param.parentElement.nextElementSibling.classList.remove('hidden');
-    console.log(document.querySelector('.level input').value.length);
+    param.parentElement.classList.toggle('hidden');
+    param.parentElement.nextElementSibling.classList.toggle('hidden');
+    /* console.log(document.querySelector('.level input').value.length); */
 }
 
 function showPreviousLevelState(param) {
-    param.classList.add('hidden');
-    param.previousElementSibling.classList.remove('hidden');
+    param.parentElement.parentElement.classList.toggle('hidden');
+    param.parentElement.parentElement.previousElementSibling.classList.toggle('hidden');
 }
 
 // volta para a página inicial
@@ -239,15 +260,42 @@ function resetQuizz() {
 function eraseAnswers(param) {
 
     const el = document.querySelectorAll('.question-option p');
-    console.log(el);
+    /* console.log(el); */
     for (const elem of el) {
         elem.previousElementSibling.classList.remove('opacity');
         elem.parentElement.setAttribute('onclick', "selectAnswer(this)");
-        console.log(elem);
+        /* console.log(elem); */
         if (elem.classList.contains(true)) {
             elem.parentElement.querySelector('.question-option p').style.color = "#000000";
         } else {
             elem.parentElement.querySelector('.question-option p').style.color = "#000000";
         }
+    }
+}
+
+function checkLevelInputs (param) {
+    const firstInput = document.querySelector(`.${param}`);
+    const seccondInput = firstInput.nextElementSibling;
+    const thirdInput = seccondInput.nextElementSibling;
+    const forthInput =  thirdInput.nextElementSibling;
+    arrayCheckLevel0.push(seccondInput.value);
+    console.log(arrayCheckLevel0);
+
+    function validURL (string) {
+        try {
+            new URL(string);
+            return true;
+        } catch (err) {
+            return false;
+        }
+    }
+
+    const checkURL = validURL(thirdInput.value);
+    if (firstInput.value.length < 10 || seccondInput.value <0 || seccondInput.value>100 || checkURL == false || forthInput.value.length < 30) {
+        alert('Entrada de dados inválida. Tente novamente!');
+    } else {
+        temporaryLevelObject.push({minValue: seccondInput.value, text: forthInput.value, image: thirdInput.value, title: firstInput.value});
+        console.log(temporaryLevelObject);
+        
     }
 }
