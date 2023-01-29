@@ -239,10 +239,10 @@ function resetQuizz() {
 function eraseAnswers(param) {
 
     const el = document.querySelectorAll('.question-option p');
-    //console.log(el);
+    console.log(el);
     for (const elem of el) {
-        elem.previousSibling.classList.remove('opacity');
-        elem.setAttribute('onclick', "selectAnswer(this)");
+        elem.previousElementSibling.classList.remove('opacity');
+        elem.parentElement.setAttribute('onclick', "selectAnswer(this)");
         console.log(elem);
         if (elem.classList.contains(true)) {
             elem.parentElement.querySelector('.question-option p').style.color = "#000000";
