@@ -166,21 +166,37 @@
 
             <div class="level-screen hidden">
                 <p>Agora, decida os níveis</p>
-                <div class="basic-info-quizz level">
+                <div class="basic-info-quizz level level1">
                     <span>Nível 1</span>
                     <input type="text" placeholder="Título do nível">
                     <input type="text" placeholder="% de acerto mínima">
                     <input type="text" placeholder="URL da imagem nível">
                     <input type="text" placeholder="Descrição do nível">
                 </div>
+
                 <div class="question-2-hidden">
                     <span>Nível 2</span>
-                    <ion-icon name="open-outline"></ion-icon>
+                    <ion-icon name="open-outline" onclick="showNextLevel(this)"></ion-icon>
+                </div>
+                <div class="basic-info-quizz level level2 hidden" onclick="showPreviousLevelState(this)">
+                    <span>Nível 2</span>
+                    <input type="text" placeholder="Título do nível">
+                    <input type="text" placeholder="% de acerto mínima">
+                    <input type="text" placeholder="URL da imagem nível">
+                    <input type="text" placeholder="Descrição do nível">
                 </div>
 
                 <div class="question-2-hidden">
                     <span>Nível 3</span>
-                    <ion-icon name="open-outline"></ion-icon>
+                    <ion-icon name="open-outline" onclick="showNextLevel(this)"></ion-icon>
+                </div>
+
+                <div class="basic-info-quizz level level2 level3 hidden" onclick="showPreviousLevelState(this)">
+                    <span>Nível 3</span>
+                    <input type="text" placeholder="Título do nível">
+                    <input type="text" placeholder="% de acerto mínima">
+                    <input type="text" placeholder="URL da imagem nível">
+                    <input type="text" placeholder="Descrição do nível">
                 </div>
                 <button onclick="proceedfinishQuizz()">Finalizar Quizz</button>
             </div>

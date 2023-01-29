@@ -6,6 +6,7 @@ const levelScreen = document.querySelector(".level-screen");
 const quizzReadyscreen = document.querySelector(".quizz-ready");
 const quizzEmpty = document.querySelector(".create-quizz-empty");
 const quizzFilled = document.querySelector(".create-quizz-filled");
+const temporaryLevelObject = {};
 
 function createQuizz() {
     firstScreen.classList.add("hidden");
@@ -25,18 +26,21 @@ function openQuestion (element){
     const nameQuestion = document.querySelector(".question-1 span");
     nameQuestion.innerHTML = "Pergunta 2";
 }
+
 function proceedLevelscreen(){
     questionScreen.classList.add("hidden");
     levelScreen.classList.remove("hidden");
     window.scrollTo(0, 0); 
 
 }
+
 function proceedfinishQuizz(){
     levelScreen.classList.add("hidden");
     quizzReadyscreen.classList.remove("hidden");
     window.scrollTo(0, 0); 
 
 }
+
 function accessQuizz(){
 
 }
@@ -152,28 +156,48 @@ function clickQuizz (param) {
     getQuizzes(fillQuizz);
     
 }
-
+// Função que executa a edição das imagens da respostas assim como os texto para indicar se a resposta está correta ou não
 function selectAnswer(param) {
 
-    console.log(param);
+    /* console.log(param); */
+    // className está recebendo um pedaço do valor total da classe que indica qual é a pergunta ou grupo de respostas dentro do quizz
     const className = `.${param.classList.value.slice(16, 18)}`;
+    // el recebe todas as respostas que possuem a classe que indica a qual pergunta ela pertence dentro do quizz
     const el = document.querySelectorAll(className);
+    /* console.log(el); */
+
+    // for of executa uma iteração entre todos os itens contidos em "el" manipulando seu respectivo conteudo "elem"
     for (const elem of el) {
         elem.querySelector('.question-option img').classList.add('opacity');
         elem.removeAttribute('onclick');
+
+        // if para manipular a propriedade color do CSS de cada texto dentro do p
         if (elem.classList.contains('true')) {
             elem.querySelector('.question-option p').style.color = "#009c22";
         } else {
             elem.querySelector('.question-option p').style.color = "#ff4b4b";
         }
     }
+    // esse param vai remover a classe de opacidade para que ela se diferencie das respostas não escolhidas
     param.querySelector('.question-option img').classList.remove('opacity');
+    // nextElement vai selecionar o próximo elemento irmão para que ele seja trazido a tela no scrollIntoView()
     const nextElement = param.parentElement.parentElement.nextSibling;
     
+    // definindo a função scrollNext() que será executada no setTimeout para trazer a proxima questão para a tela.
     function scrollNext() {
         nextElement.scrollIntoView();
     }
-
+    // executando o setTimeout para trazer a próxima pergunta para a tela
     setTimeout(scrollNext, 2000);
 }
 
+function showNextLevel(param) {
+    param.parentElement.classList.add('hidden');
+    param.parentElement.nextElementSibling.classList.remove('hidden');
+    console.log(document.querySelector('.level input').value.length);
+}
+
+function showPreviousLevelState(param) {
+    param.classList.add('hidden');
+    param.previousElementSibling.classList.remove('hidden');
+}

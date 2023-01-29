@@ -478,6 +478,10 @@ main {
     align-items: flex-start;
 }
 
+.level2 {
+    margin-top: 25px;
+}
+
 .level span {
     margin: 10px 25px 25px;
 }
