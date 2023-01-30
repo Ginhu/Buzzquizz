@@ -223,11 +223,12 @@ function selectAnswer(param) {
     // esse param vai remover a classe de opacidade para que ela se diferencie das respostas não escolhidas
     param.querySelector('.question-option img').classList.remove('opacity');
     // nextElement vai selecionar o próximo elemento irmão para que ele seja trazido a tela no scrollIntoView()
-    const nextElement = param.parentElement.parentElement.nextSibling;
+    const nextElement = param.parentElement.parentElement.nextElementSibling;
     
     // definindo a função scrollNext() que será executada no setTimeout para trazer a proxima questão para a tela.
     function scrollNext() {
         nextElement.scrollIntoView();
+        console.log(nextElement);
     }
     // executando o setTimeout para trazer a próxima pergunta para a tela
     setTimeout(scrollNext, 2000);
@@ -235,6 +236,7 @@ function selectAnswer(param) {
     /* console.log(quizzData); */
     if (selectedAnswerCounter == quizzData.questions.length) {
         endQuizzShowResults(correctAnswerCounter);
+        setTimeout(scrollNext, 2000);
     }
 }
 
@@ -262,7 +264,9 @@ function resetQuizz() {
     top: 0,
     behavior: 'smooth'
     });
-
+    selectedAnswerCounter = 0;
+    correctAnswerCounter = 0;
+    document.querySelector('.end-quizz').classList.toggle('hidden');
     eraseAnswers();
 }
 
