@@ -9,6 +9,19 @@ const quizzFilled = document.querySelector(".create-quizz-filled");
 const temporaryLevelObject = [], arrayCheckLevel0 = [];
 
 
+const text = document.getElementById("text-question");
+const colorQuestion = document.getElementById("color-question");
+const rightAnswer = document.getElementById("right-answer");
+const incAnswer1 = document.getElementById("inc-answer-1");
+const incorrectAnswer2 = document.getElementById("incorrect-answer-2");
+const incorrectAnswer3 = document.getElementById("incorrect-answer-3");
+
+const title = document.getElementById("title");
+const imageQuizz = document.getElementById("image-quizz");
+const questionsAmount = document.getElementById("questions-amount");
+const levelsAmount = document.getElementById("levels-amount");
+
+let idQuizz, quizzData, correctAnswerCounter = 0, selectedAnswerCounter = 0;
 
 
 function createQuizz() {
