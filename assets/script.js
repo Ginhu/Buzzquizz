@@ -13,7 +13,7 @@ const imageQuizz = document.getElementById("image-quizz");
 const questionsAmount = document.getElementById("questions-amount");
 const levelsAmount = document.getElementById("levels-amount");
 
-
+let idQuizz, quizzData, correctAnswerCounter = 0, selectedAnswerCounter = 0;
 
 function createQuizz() {
     firstScreen.classList.add("hidden");
@@ -51,17 +51,17 @@ function proceedfinishQuizz(){
 
     if (document.querySelector('.level1 input').value != "") {
         checkLevelInputs("level1 input");
-        console.log("checando lvl1 input");
+        /* console.log("checando lvl1 input"); */
     }
 
     if (document.querySelector('.level2 input').value != "") {
         checkLevelInputs("level2 input");
-        console.log("checando lvl2 input");
+        /* console.log("checando lvl2 input"); */
     }
 
     if (document.querySelector('.level3 input').value != "") {
         checkLevelInputs("level3 input");
-        console.log("checando lvl3 input");
+        /* console.log("checando lvl3 input"); */
     }
 
     if (arrayCheckLevel0.includes('0') == true) {
@@ -126,7 +126,7 @@ function clickQuizz (param) {
     // Guarda o ID do quizz na variável 
     // ** O slice é um método de string que vai pegar a string da classe do parâmetro passado e vai pegar apenas a parte que 
     // nos interessa, o ID respectivo do quizz que foi selecionado
-    const idQuizz = parseInt(param.classList.value.slice(13));
+    idQuizz = parseInt(param.classList.value.slice(13));
     /* console.log(idQuizz); */
 
     // Os dois document.querySelector estão apenas "mudando" de tela, escondendo a primeira e fazendo aparecer a segunda.
@@ -136,13 +136,12 @@ function clickQuizz (param) {
     // Essa função vai "preencher" a página que vai aparecer com as respectivas informações do quizz selecionado
     function fillQuizz(param) {
         const data = param.data;
-        
         // Esse for itera todos os quizzes até encontrar o quizz com ID correspondente ao selecionado
         for (let i = 0; i<data.length; i++) {
             // Esse é o if que identifica o quizz com o mesmo ID do selecionado
             if (data[i].id == idQuizz) {
                 // Apenas guardando informações de retorno do servidor para deixar o uso delas mais "simples" ao decorrer do código
-                const quizzData = data[i];
+                quizzData = data[i];
                 const question = quizzData.questions;
                 
                 /* console.log(quizzData); */
@@ -195,7 +194,13 @@ function clickQuizz (param) {
 }
 // Função que executa a edição das imagens da respostas assim como os texto para indicar se a resposta está correta ou não
 function selectAnswer(param) {
+    param.classList.add('selected-answer'); 
+    selectedAnswerCounter++;
 
+    if(param.classList.contains('true') == true && param.classList.contains('selected-answer')) {
+        correctAnswerCounter ++;
+        /* console.log(correctAnswerCounter); */
+    }
     /* console.log(param); */
     // className está recebendo um pedaço do valor total da classe que indica qual é a pergunta ou grupo de respostas dentro do quizz
     const className = `.${param.classList.value.slice(16, 18)}`;
@@ -226,6 +231,11 @@ function selectAnswer(param) {
     }
     // executando o setTimeout para trazer a próxima pergunta para a tela
     setTimeout(scrollNext, 2000);
+
+    /* console.log(quizzData); */
+    if (selectedAnswerCounter == quizzData.questions.length) {
+        endQuizzShowResults(correctAnswerCounter);
+    }
 }
 
 function showNextLevel(param) {
@@ -279,7 +289,7 @@ function checkLevelInputs (param) {
     const thirdInput = seccondInput.nextElementSibling;
     const forthInput =  thirdInput.nextElementSibling;
     arrayCheckLevel0.push(seccondInput.value);
-    console.log(arrayCheckLevel0);
+    /* console.log(arrayCheckLevel0); */
 
     function validURL (string) {
         try {
@@ -295,7 +305,56 @@ function checkLevelInputs (param) {
         alert('Entrada de dados inválida. Tente novamente!');
     } else {
         temporaryLevelObject.push({minValue: seccondInput.value, text: forthInput.value, image: thirdInput.value, title: firstInput.value});
-        console.log(temporaryLevelObject);
+        /* console.log(temporaryLevelObject); */
         
+    }
+}
+
+function endQuizzShowResults (param) {
+    const rightAnswers = Math.round((param/selectedAnswerCounter)*100);
+    let levels = [];
+    const el = quizzData.levels;
+    
+    for (let elem of el) {
+        levels.push(elem.minValue);
+    }
+
+    levels.sort((a,b)=>a-b);
+
+    if (levels.length == 1 || (levels.length == 2 && rightAnswers >= levels[0] && rightAnswers < levels[1]) || (levels.length == 3 && rightAnswers >= levels[0] && rightAnswers < levels[1])) {
+        for (let i = 0; i < quizzData.levels.length; i++) {
+            const quizzLevelsIncludes = quizzData.levels[i];
+            if (quizzLevelsIncludes.minValue == levels[0]) {
+                document.querySelector('.end-quizz-result p').innerHTML = `${rightAnswers}% de acerto: ${quizzLevelsIncludes.title}`;
+                document.querySelector('.end-results-details-img').style.background = `url(${quizzLevelsIncludes.image}) no-repeat center center`;
+                document.querySelector('.end-results-details-text p').innerHTML = quizzLevelsIncludes.text;
+                document.querySelector('.end-quizz').classList.toggle('hidden');
+                console.log(quizzLevelsIncludes)
+                console.log(levels)
+            }
+        }
+
+    } else if ((levels.length == 2 && rightAnswers >= levels[1]) || (levels.length == 3 && rightAnswers >= levels[1] && rightAnswers < levels[2])) {
+        for (let i = 0; i < quizzData.levels.length; i++) {
+            const quizzLevelsIncludes = quizzData.levels[i];
+            if (quizzLevelsIncludes.minValue == levels[1]) {
+                document.querySelector('.end-quizz-result p').innerHTML = `${rightAnswers}% de acerto: ${quizzLevelsIncludes.title}`;
+                document.querySelector('.end-results-details-img').style.background = `url(${quizzLevelsIncludes.image}) no-repeat center center`;
+                document.querySelector('.end-results-details-text p').innerHTML = quizzLevelsIncludes.text;
+                document.querySelector('.end-quizz').classList.toggle('hidden');
+                console.log(quizzLevelsIncludes)
+                console.log(levels)
+            }
+        }
+    } else {
+        for (let i = 0; i < quizzData.levels.length; i++) {
+            const quizzLevelsIncludes = quizzData.levels[i];
+            /* if (quizzLevelsIncludes.minValue >= levels[2]) { */
+                document.querySelector('.end-quizz-result p').innerHTML = `${rightAnswers}% de acerto: ${quizzLevelsIncludes.title}`;
+                document.querySelector('.end-results-details-img').style.background = `url(${quizzLevelsIncludes.image}) no-repeat center center`;
+                document.querySelector('.end-results-details-text p').innerHTML = quizzLevelsIncludes.text;
+                document.querySelector('.end-quizz').classList.toggle('hidden');
+            /* } */
+        }
     }
 }
