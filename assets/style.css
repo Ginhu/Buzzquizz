@@ -478,6 +478,21 @@ main {
     align-items: flex-start;
 }
 
+.level2 {
+    margin-top: 25px;
+}
+
+.div-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding-right: 2vw;
+}
+
+.div-header ion-icon {
+    font-size: 25px;
+}
+
 .level span {
     margin: 10px 25px 25px;
 }
