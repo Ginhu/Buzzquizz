@@ -7,11 +7,12 @@ const quizzReadyscreen = document.querySelector(".quizz-ready");
 const quizzEmpty = document.querySelector(".create-quizz-empty");
 const quizzFilled = document.querySelector(".create-quizz-filled");
 
-const title = document.getElementById("title");
-const imageQuizz = document.getElementById("image-quizz");
-const questionsAmount = document.getElementById("questions-amount");
-const levelsAmount = document.getElementById("levels-amount");
-
+const text = document.getElementById("text-question");
+const colorQuestion = document.getElementById("color-question");
+const rightAnswer = document.getElementById("right-answer");
+const incAnswer1 = document.getElementById("inc-answer-1");
+const incorrectAnswer2 = document.getElementById("incorrect-answer-2");
+const incorrectAnswer3 = document.getElementById("incorrect-answer-3");
 
 
 function createQuizz() {
@@ -39,9 +40,15 @@ function openQuestion (element){
     nameQuestionhidden.innerHTML = lastNameQuestion;
 }
 function proceedLevelscreen(){
+    if(text.value.length >= 20 && rightAnswer != "" && (incAnswer1 != "" || incorrectAnswer2 != "" || incorrectAnswer3 != "")){
+    console.log(text.value.length);
     questionScreen.classList.add("hidden");
     levelScreen.classList.remove("hidden");
-    window.scrollTo(0, 0); 
+    window.scrollTo(0, 0);
+    }
+   else{
+     alert('preencha corretamente');
+   }
 
 }
 function proceedfinishQuizz(){
