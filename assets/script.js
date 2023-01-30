@@ -21,11 +21,48 @@ function createQuizz() {
     window.scrollTo(0, 0); 
 }
 
+function createQuizz() {
+    firstScreen.classList.add("hidden");
+    basicInfo.classList.remove("hidden");
+    window.scrollTo(0, 0); 
+}
+
+function basicInfoValidation() {
+    // validação do título do quiz
+    if (title.length < 20 || title.length > 65) {
+        alert('Quantidade de caracteres inválida! Insira título entre 20 e 65 caracteres.');
+        createQuizz();
+    }
+    // validação da URL das imagens de resposta
+    const checkURL = validURL(imageQuizz);
+    if (checkURL !== true) {
+        alert('URL inválida. Tente novamente!');
+        createQuizz();
+    }
+
+    // validação de quantidade de perguntas
+    if (questionsAmount < questionsAmount.minValue) {
+        alert('A quantidade mínima de perguntas é 3!');
+        createQuizz();
+    }
+    // validação de quantidade de níveis
+    if (levelsAmount < levelsAmount.minValue) {
+        alert('A quantidade mínima de níveis é 2!');
+        createQuizz();
+    }
+}
+
+function createQuizzValidation() {
+    basicInfoValidation();
+    //questionsValidation();
+}
+
 function proceedCreatequestions() {
     basicInfo.classList.add("hidden");
     questionScreen.classList.remove("hidden");
     window.scrollTo(0, 0); 
 
+    createQuizzValidation()
 }
 
 function openQuestion (element){
@@ -228,7 +265,6 @@ function selectAnswer(param) {
     // definindo a função scrollNext() que será executada no setTimeout para trazer a proxima questão para a tela.
     function scrollNext() {
         nextElement.scrollIntoView();
-        console.log(nextElement);
     }
     // executando o setTimeout para trazer a próxima pergunta para a tela
     setTimeout(scrollNext, 2000);
@@ -287,6 +323,15 @@ function eraseAnswers(param) {
     }
 }
 
+function validURL (string) {
+    try {
+        new URL(string);
+        return true;
+    } catch (err) {
+        return false;
+    }
+}
+
 function checkLevelInputs (param) {
     const firstInput = document.querySelector(`.${param}`);
     const seccondInput = firstInput.nextElementSibling;
@@ -294,15 +339,6 @@ function checkLevelInputs (param) {
     const forthInput =  thirdInput.nextElementSibling;
     arrayCheckLevel0.push(seccondInput.value);
     /* console.log(arrayCheckLevel0); */
-
-    function validURL (string) {
-        try {
-            new URL(string);
-            return true;
-        } catch (err) {
-            return false;
-        }
-    }
 
     const checkURL = validURL(thirdInput.value);
     if (firstInput.value.length < 10 || seccondInput.value <0 || seccondInput.value>100 || checkURL == false || forthInput.value.length < 30) {
